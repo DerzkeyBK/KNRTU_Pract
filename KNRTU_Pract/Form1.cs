@@ -29,7 +29,22 @@ namespace KNRTU_Pract
         {
             user = new User(textBox1.Text, textBox2.Text, textBox3.Text, textBox4.Text);
             PostgreServerWorker postgreServerWorker = new PostgreServerWorker(textBox5.Text);
-            MessageBox.Shwo
+            try
+            {
+                postgreServerWorker.Work();
+                Form2 form2 = new Form2(user,postgreServerWorker);
+                form2.Show();
+                Hide();
+            }
+            catch(Exception exc)
+            {
+                MessageBox.Show("ошибка,Server not found",Convert.ToString(exc));
+            }
+        }
+
+        private void TextBox4_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
