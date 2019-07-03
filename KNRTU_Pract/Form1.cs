@@ -31,7 +31,7 @@ namespace KNRTU_Pract
             PostgreServerWorker postgreServerWorker = new PostgreServerWorker(textBox5.Text);
             try
             {
-                postgreServerWorker.Work();
+                postgreServerWorker.TryConnection();
                 Form2 form2 = new Form2(user,postgreServerWorker);
                 form2.Show();
                 Hide();

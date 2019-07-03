@@ -89,9 +89,9 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(237, 145);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(13, 13);
+            this.label6.Size = new System.Drawing.Size(19, 13);
             this.label6.TabIndex = 5;
-            this.label6.Text = "1";
+            this.label6.Text = "20";
             // 
             // label7
             // 
@@ -116,7 +116,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(383, 256);
+            this.ClientSize = new System.Drawing.Size(383, 322);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);

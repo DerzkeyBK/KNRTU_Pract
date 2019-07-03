@@ -7,17 +7,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Npgsql;
 
 namespace KNRTU_Pract
 {
     public partial class Form2 : Form
     {
-        PostgreServerWorker postgreServerWorker;
+        public PostgreServerWorker PostgreServerWorker { get; set; }
+        public User User { get; set; }
         public Form2(User user,PostgreServerWorker postgreServerWorker)
         {
             InitializeComponent();
-            label4.Text =Convert.ToString(postgreServerWorker.Time/60000);
-            label6.Text = Convert.ToString(postgreServerWorker.Questions);
+            PostgreServerWorker = postgreServerWorker;
+            User = user;
         }
 
         private void Label1_Click(object sender, EventArgs e)
@@ -32,12 +34,17 @@ namespace KNRTU_Pract
 
         private void Button1_Click(object sender, EventArgs e)
         {
+            int corrects = 0;
             Hide();
-            int i = 0;
-            while (i < postgreServerWorker.Questions)
+            for(int i = 0; i < 20; i++)
             {
-                
+                corrects=+PostgreServerWorker.GetQuestion(i);
             }
+        }
+
+        private void Label8_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
