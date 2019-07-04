@@ -18,7 +18,6 @@ namespace KNRTU_Pract
 
         public int correctAnswer { get; set; }
 
-        public int time { get; set; }
 
         public QuestionModel(NpgsqlConnection npgSqlConnection,int QuestionID)
         {
@@ -29,16 +28,14 @@ namespace KNRTU_Pract
             NpgsqlDataReader reader =comm.ExecuteReader();
             while (reader.Read())
             {
-                question = reader.GetString(1);
+                question = reader.GetString(0);
                 for (int i = 0; i < 4; i++)
                 {
-                    answers[i] = reader.GetString(1 + i);
+                    answers[i] = reader.GetString(i);
                 }
-                correctAnswer = reader.GetInt32(6);
-                time = reader.GetInt32(7);
+                correctAnswer = reader.GetInt32(5);
             }
             npgSqlConnection.Close();
-            Console.ReadKey();
         }
     }
 }

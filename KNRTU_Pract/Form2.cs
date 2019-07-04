@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Npgsql;
+using System.Threading;
 
 namespace KNRTU_Pract
 {
@@ -20,6 +21,7 @@ namespace KNRTU_Pract
             InitializeComponent();
             PostgreServerWorker = postgreServerWorker;
             User = user;
+            timer1.Interval=Convert.ToInt32(textBox1.Text) * 60 * 1000;
         }
 
         private void Label1_Click(object sender, EventArgs e)
@@ -35,16 +37,25 @@ namespace KNRTU_Pract
         private void Button1_Click(object sender, EventArgs e)
         {
             int corrects = 0;
+            QuestionModel[] questionModels=PostgreServerWorker.GetQuestions(Convert.ToInt32(textBox2.Text));
             Hide();
-            for(int i = 0; i < 20; i++)
+            timer1.Start();
+            for(int i=0;i< Convert.ToInt32(textBox2.Text); i++)
             {
-                corrects=+PostgreServerWorker.GetQuestion(i);
+                bool result= PostgreServerWorker.TestPass(i, questionModels);
+                if (result) corrects++;
             }
+            
         }
 
         private void Label8_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void Timer1_Tick(object sender, EventArgs e)
+        {
+            
         }
     }
 }

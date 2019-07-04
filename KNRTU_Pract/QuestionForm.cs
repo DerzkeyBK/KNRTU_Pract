@@ -7,12 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace KNRTU_Pract
 {
     public partial class QuestionForm : Form
     {
-        int Answer { get; set; }
+        public int Answer;
+        public bool flag = false;
+        public int correctAnswer;
         public QuestionForm(QuestionModel questionModel,int i)
         {
             InitializeComponent();
@@ -22,12 +25,13 @@ namespace KNRTU_Pract
             button3.Text = questionModel.answers[1];
             button4.Text = questionModel.answers[2];
             button5.Text = questionModel.answers[3];
-
+            correctAnswer = questionModel.correctAnswer;
         }
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            
+            flag = true;
+
         }
 
         private void QuestionForm_Load(object sender, EventArgs e)
@@ -55,10 +59,25 @@ namespace KNRTU_Pract
         {
             Answer = 4;
         }
-
-        private void Timer1_Tick(object sender, EventArgs e)
+        
+        public bool AnswerTheQuestion()
         {
+            bool result;
+            Show();
+            while (!flag)
+            {
 
+            }
+            if (Answer == correctAnswer)
+            {
+                result = true;
+            }
+            else
+            {
+                result = false;
+            }
+            Close();
+            return result;
         }
     }
 }

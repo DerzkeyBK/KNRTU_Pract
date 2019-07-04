@@ -40,9 +40,15 @@ namespace KNRTU_Pract
             {
                 MessageBox.Show("ошибка,Server not found",Convert.ToString(exc));
             }
+            
         }
 
         private void TextBox4_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
         {
 
         }
