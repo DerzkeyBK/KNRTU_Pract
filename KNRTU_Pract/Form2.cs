@@ -14,6 +14,7 @@ namespace KNRTU_Pract
 {
     public partial class Form2 : Form
     {
+        public int corrects = 0;
         public PostgreServerWorker PostgreServerWorker { get; set; }
         public User User { get; set; }
         public Form2(User user,PostgreServerWorker postgreServerWorker)
@@ -21,7 +22,6 @@ namespace KNRTU_Pract
             InitializeComponent();
             PostgreServerWorker = postgreServerWorker;
             User = user;
-            timer1.Interval=Convert.ToInt32(textBox1.Text) * 60 * 1000;
         }
 
         private void Label1_Click(object sender, EventArgs e)
@@ -36,15 +36,23 @@ namespace KNRTU_Pract
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            int corrects = 0;
-            QuestionModel[] questionModels=PostgreServerWorker.GetQuestions(Convert.ToInt32(textBox2.Text));
+            timer1.Interval = Convert.ToInt32(textBox1.Text) * 60 * 1000;
+            QuestionModel[] questionModels = PostgreServerWorker.GetQuestions(Convert.ToInt32(textBox2.Text));
             Hide();
             timer1.Start();
-            for(int i=0;i< Convert.ToInt32(textBox2.Text); i++)
+            for (int i = 0; i < Convert.ToInt32(textBox2.Text); i++)
             {
-                bool result= PostgreServerWorker.TestPass(i, questionModels);
-                if (result) corrects++;
+                QuestionForm questionForm = new QuestionForm(questionModels[i], i);
+                questionForm.FormClosing += SecondFormClosing;
+                questionForm.ShowDialog();
+                if (questionForm.correct) corrects++;
             }
+
+        }
+
+        private void SecondFormClosing(object sender, EventArgs e)
+        {
+            bool fromSecondForm = (sender as QuestionForm).correct;
             
         }
 
@@ -55,7 +63,7 @@ namespace KNRTU_Pract
 
         private void Timer1_Tick(object sender, EventArgs e)
         {
-            
+            Close();
         }
     }
 }

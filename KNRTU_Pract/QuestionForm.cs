@@ -14,8 +14,8 @@ namespace KNRTU_Pract
     public partial class QuestionForm : Form
     {
         public int Answer;
-        public bool flag = false;
         public int correctAnswer;
+        public bool correct = false;
         public QuestionForm(QuestionModel questionModel,int i)
         {
             InitializeComponent();
@@ -30,13 +30,13 @@ namespace KNRTU_Pract
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            flag = true;
-
+            if (Answer == correctAnswer) correct=true;
+            Close();
         }
 
         private void QuestionForm_Load(object sender, EventArgs e)
         {
-           
+             
         }
 
         private void Button2_Click(object sender, EventArgs e)
@@ -60,24 +60,5 @@ namespace KNRTU_Pract
             Answer = 4;
         }
         
-        public bool AnswerTheQuestion()
-        {
-            bool result;
-            Show();
-            while (!flag)
-            {
-
-            }
-            if (Answer == correctAnswer)
-            {
-                result = true;
-            }
-            else
-            {
-                result = false;
-            }
-            Close();
-            return result;
-        }
     }
 }

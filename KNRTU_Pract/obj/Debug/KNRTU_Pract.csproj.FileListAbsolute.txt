@@ -26,3 +26,4 @@ C:\Users\gimad\source\repos\KNRTU_Pract\KNRTU_Pract\obj\Debug\KNRTU_Pract.csproj
 C:\Users\gimad\source\repos\KNRTU_Pract\KNRTU_Pract\obj\Debug\KNRTU_Pract.exe
 C:\Users\gimad\source\repos\KNRTU_Pract\KNRTU_Pract\obj\Debug\KNRTU_Pract.pdb
 C:\Users\gimad\source\repos\KNRTU_Pract\KNRTU_Pract\obj\Debug\KNRTU_Pract.QuestionForm.resources
+C:\Users\gimad\source\repos\KNRTU_Pract\KNRTU_Pract\obj\Debug\KNRTU_Pract.FinalForm.resources

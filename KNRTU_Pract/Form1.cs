@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using KNRTU_Pract;
+using Npgsql;
 
 namespace KNRTU_Pract
 {
@@ -32,15 +33,21 @@ namespace KNRTU_Pract
             try
             {
                 postgreServerWorker.TryConnection();
-                Form2 form2 = new Form2(user,postgreServerWorker);
-                form2.Show();
-                Hide();
             }
-            catch(Exception exc)
+            catch (Exception s)
             {
-                MessageBox.Show("ошибка,Server not found",Convert.ToString(exc));
+                MessageBox.Show(Convert.ToString(s)); 
             }
+
+            Form2 form2 = new Form2(user,postgreServerWorker);
+            form2.FormClosing += SecondFormClosing;
+            Hide();
+            form2.ShowDialog();
+            FinalForm form = new FinalForm(form2.corrects, Convert.ToInt32(form2.textBox2.Text));
+            form.ShowDialog();
+            Close();
             
+          
         }
 
         private void TextBox4_TextChanged(object sender, EventArgs e)
@@ -51,6 +58,12 @@ namespace KNRTU_Pract
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void SecondFormClosing(object sender, EventArgs e)
+        {
+            int fromSecondForm1 = (sender as Form2).corrects;
+            string fromSecondForm2 = (sender as Form2).textBox2.Text;
         }
     }
 }

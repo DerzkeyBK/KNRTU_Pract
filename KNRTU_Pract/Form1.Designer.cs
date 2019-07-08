@@ -40,7 +40,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
-            this.npgsqlCommand1 = new Npgsql.NpgsqlCommand();
             this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -145,12 +144,6 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
-            // npgsqlCommand1
-            // 
-            this.npgsqlCommand1.AllResultTypesAreUnknown = false;
-            this.npgsqlCommand1.Transaction = null;
-            this.npgsqlCommand1.UnknownResultTypeList = null;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -200,7 +193,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Button button2;
-        private Npgsql.NpgsqlCommand npgsqlCommand1;
         private System.Windows.Forms.Label label7;
     }
 }
